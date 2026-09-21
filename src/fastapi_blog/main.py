@@ -1,0 +1,28 @@
+from fastapi import FastAPI
+
+app = FastAPI()
+
+posts: list[dict] = [
+    {
+        "id": 1,
+        "author": "NiruJay",
+        "title": "FastAPI is Awesome",
+        "content": "This framework is really easy to use and super fast.",
+        "date_posted": "Sep 21, 2026",
+    },
+    {
+        "id": 2,
+        "author": "TJ OH",
+        "title": "Python is Great for Web Development",
+        "content": "Python is a great language for web development, and FastAPI makes it even better.",
+        "date_posted": "Dec 21, 2026",
+    },
+]
+
+@app.get("/")
+def home():
+    return {"message": "Hello from fastapi-blog hehe!"}
+
+@app.get("/api/posts")
+def get_posts():
+    return posts
